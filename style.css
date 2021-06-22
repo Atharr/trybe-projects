@@ -26,6 +26,15 @@ strong {
   color: darkslateblue;
 }
 
+p {
+  padding: 5px;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -50,13 +59,15 @@ strong {
 
 .lado-esquerdo {
   float: left;
-  padding: 10px;
+  margin: 20px;
+  box-shadow: 5px 10px 8px 10px lightgray;
 }
 
 .lado-direito {
   background-color: rgb(227, 250, 255);
   float: right;
-  padding: 10px;
+  box-shadow: 5px 10px 8px 10px lightgray;
+  margin: 20px;
 }
 
 #cabecalho {
