@@ -1,22 +1,42 @@
 body {
-	background-color: rgb(253, 251, 251);
+  background-color: rgb(253, 251, 251);
 }
+
 header {
-	background-color: rgb(167, 208, 234);
+  color: darkslateblue;
+  background-color: rgb(201, 233, 245);
+  padding: 10px;
+  border-left: 5px solid rgb(167, 208, 234);
 }
-header#cabecalho {
-	position: fixed;
-	top: 0;
-	width: 100%;
+
+footer {
+  background-color: rgb(227, 250, 255);
+  padding: 10px;
+  border-left: 5px solid rgb(167, 208, 234);
 }
+
 h1 {
-	text-align: center;
+  text-align: center;
 }
-img.center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
+
 strong {
-	color: darkred;
+  color: darkslateblue;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cabecalho {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
