@@ -19,7 +19,7 @@ function splitSentence(str) {
 // Desafio 4
 function concatName(list) {
   // seu código aqui
-  return list[list.length-1] + ", " + list[0];
+  return list.pop().concat(", ", list.shift());
 }
 
 // Desafio 5
@@ -29,8 +29,9 @@ function footballPoints(wins, ties) {
 }
 
 // Desafio 6
-function highestCount() {
+function highestCount(list) {
   // seu código aqui
+  return list.filter(x => x===Math.max(...list)).length;
 }
 
 // Desafio 7
