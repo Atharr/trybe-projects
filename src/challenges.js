@@ -63,17 +63,43 @@ function catAndMouse(mouse, cat1, cat2) {
 }
 
 // Desafio 8
-function fizzBuzz() {
+function fizzBuzz(numbers) {
   // seu código aqui
-
+  // função callback para map()
+  function replace(value) {
+    switch (true) {
+    case (value % 3 === 0) && (value % 5 !== 0):
+      return 'fizz'; // divisível por 3 mas não por 5
+    case (value % 5 === 0) && (value % 3 !== 0):
+      return 'buzz'; // divisível por 5 mas não por 3
+    case (value % 3 === 0) && (value % 5 === 0):
+      return 'fizzBuzz'; // divisível por 3 e por 5
+    default:
+      return 'bug!'; // não é divisível por 3 nem por 5
+    }
+  }
+  // map() executa uma função callback em cada elemento do array
+  return numbers.map(replace);
 }
 
 // Desafio 9
-function encode() {
+function encode(str) {
   // seu código aqui
+  // replace() permite substituir usando regex, e globalmente usando /g
+  str = str.replace(/a/g, '1');
+  str = str.replace(/e/g, '2');
+  str = str.replace(/i/g, '3');
+  str = str.replace(/o/g, '4');
+  return str.replace(/u/g, '5');
 }
-function decode() {
+function decode(str) {
   // seu código aqui
+  // replace() permite substituir usando regex, e globalmente usando /g
+  str = str.replace(/1/g, 'a');
+  str = str.replace(/2/g, 'e');
+  str = str.replace(/3/g, 'i');
+  str = str.replace(/4/g, 'o');
+  return str.replace(/5/g, 'u');
 }
 
 module.exports = {
