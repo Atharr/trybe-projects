@@ -34,13 +34,23 @@ function generatePhoneNumber(digitos) {
 }
 
 // Desafio 12
-function triangleCheck() {
+function triangleCheck(lineA, lineB, lineC) {
   // seu código aqui
+  return (lineA < lineB + lineC)
+      && (lineB < lineA + lineC)
+      && (lineC < lineA + lineB)
+      && (lineA > Math.abs(lineB - lineC))
+      && (lineB > Math.abs(lineA - lineC))
+      && (lineC > Math.abs(lineA - lineB));
 }
 
 // Desafio 13
-function hydrate() {
+function hydrate(bebidas) {
   // seu código aqui
+  // match() cria um array com os números encontrados, e reduce() usa o callback para fazer a soma
+  let coposAgua = bebidas.match(/\d/g).reduce((total, valor) => (Number(total) + Number(valor)));
+  // monta a string de retorno, acrescentando 's' caso o valor seja mais de 1
+  return coposAgua.toString().concat(' copo', (coposAgua > 1 ? 's' : ''), ' de água');
 }
 
 module.exports = {
