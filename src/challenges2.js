@@ -14,34 +14,28 @@ function techList(list, name) {
 // Desafio 11
 function generatePhoneNumber(digitos) {
   // seu código aqui
+  // se recebeu quantidade diferente de dígitos, retorna mensagem de erro
   if (digitos.length !== 11) {
-    return 'Array com tamanho incorreto.'; // se recebeu quantidade diferente de dígitos, retorna mensagem de erro
+    return 'Array com tamanho incorreto.';
   }
-  for (let digit of digitos) {
-    if (digit < 0 || digit > 9) {
-      return 'não é possível gerar um número de telefone com esses valores'; // se as entradas não forem dígitos, retorna mensagem de erro
-    }
+  // faz a contagem do número de repetições: a função callback gera um array com as frequências
+  let count = digitos.reduce((tot, i) => { tot[i] = i in tot ? tot[i] + 1 : 1; return tot; }, []);
+  // testa as posições: se não forem dígitos (<0 ou >9) ou repetir 3x ou mais, retorna mensagem de erro
+  if (digitos.some((i) => i < 0 || i > 9 || count[i] >= 3)) {
+    return 'não é possível gerar um número de telefone com esses valores';
   }
-  for (let i = 0; i <= 9; i += 1) { // a cada passagem, testamos um dígito:
-    if (digitos.filter((x) => (x === i)).length >= 3) { // filter() elimina os demais valores do array, usando a função callback; length contém o número de ocorrências
-      return 'não é possível gerar um número de telefone com esses valores';
-    }
-  }
-  digitos.splice(0, 0, '('); // gera o número de telefone: splice() insere os caracteres
+  // gera o número de telefone: splice() insere os caracteres
+  digitos.splice(0, 0, '(');
   digitos.splice(3, 0, ') ');
   digitos.splice(9, 0, '-');
-  return digitos.join(''); // join() converte o array em string
+  // join() converte o array em string
+  return digitos.join('');
 }
 
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
   // seu código aqui
-  return (lineA < lineB + lineC)
-      && (lineB < lineA + lineC)
-      && (lineC < lineA + lineB)
-      && (lineA > Math.abs(lineB - lineC))
-      && (lineB > Math.abs(lineA - lineC))
-      && (lineC > Math.abs(lineA - lineB));
+  return (lineA < lineB + lineC) && (lineA > Math.abs(lineB - lineC));
 }
 
 // Desafio 13

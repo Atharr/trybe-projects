@@ -68,12 +68,12 @@ function fizzBuzz(numbers) {
   // função callback para map()
   function replace(value) {
     switch (true) {
-    case (value % 3 === 0) && (value % 5 !== 0):
-      return 'fizz'; // divisível por 3 mas não por 5
-    case (value % 5 === 0) && (value % 3 !== 0):
-      return 'buzz'; // divisível por 5 mas não por 3
     case (value % 3 === 0) && (value % 5 === 0):
       return 'fizzBuzz'; // divisível por 3 e por 5
+    case (value % 3 === 0):
+      return 'fizz'; // divisível por 3 mas não por 5
+    case (value % 5 === 0):
+      return 'buzz'; // divisível por 5 mas não por 3
     default:
       return 'bug!'; // não é divisível por 3 nem por 5
     }
