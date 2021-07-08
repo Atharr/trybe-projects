@@ -7,3 +7,17 @@
   font-size: 40px;
   color: purple;
 }
+
+#color-palette {
+  width: 40%;
+  height: 10%;
+  padding: 10px;
+}
+
+.color {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  margin: 5px;
+}
