@@ -1,0 +1,9 @@
+* {
+  text-align: center;
+  margin: auto;
+}
+
+#title {
+  font-size: 40px;
+  color: purple;
+}
