@@ -21,3 +21,17 @@
   border: 1px solid black;
   margin: 5px;
 }
+
+#pixel-board {
+  margin-top: 10px;
+  padding: 5px 1px 0px 0px;
+}
+
+.pixel {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+  border: 1px solid black;
+  margin: -5px -1px 0px 0px;
+}

@@ -33,8 +33,35 @@ function createPalette(n) {
   document.querySelector(".color").classList.add("selected");
 }
 
+// createBoard(): cria o tabuleiro de pixels
+// o parâmetro n determina o tamanho do tabuleiro (n * n)
+function createBoard(n) {
+  // obtém o seletor do pixel-board
+  let board = document.querySelector("#pixel-board");
+  // remove os filhos (pixels)
+  while (board.firstChild) {
+    board.removeChild(board.lastChild);
+  }
+  // ajusta o tamanho do pixel-board
+  let size = n * 41;
+  board.style.width = `${size}px`;
+  board.style.height = `${size}px`;
+  // acrescenta os pixels ao pixel-board
+  for (let i = 0; i < Math.pow(n, 2); i += 1) {
+    let pixel = document.createElement("div"); // cria um elemento div
+    pixel.className = "pixel"; // atribui a classe .pixel
+    pixel.style.backgroundColor = "white"; // atribui a cor branca
+    pixel.addEventListener("click", (event) => { // acrescenta o event listener
+      pixel.style.backgroundColor = document.querySelector('.selected').style.backgroundColor;
+    });
+    board.appendChild(pixel); // anexa o pixel como filho de pixel-board
+  }
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
   // cria a paleta de cores com 4 elementos
   createPalette(4);
+  // cria o tabuleiro de pixels com tamanho 5 x 5
+  createBoard(5);
 }
