@@ -53,6 +53,29 @@ function createBoard(n) {
   }
 }
 
+// setButtonCreateBoard(): configura o botão que cria o tabuleiro de pixels
+// o tamanho do tabuleiro é obtido do conteúdo do input #board-size, e deve ser entre 5 e 50
+// a função também checa a consistência do tamanho contido no input, ajustando-o se necessário
+function setButtonCreateBoard() {
+  // acrescenta o event listener ao botão #generate-board
+  document.querySelector('#generate-board').addEventListener('click', () => {
+    // obtém o valor contido no input #board-size
+    const input = document.querySelector('#board-size');
+    let n = input.value;
+    if (n === '') {
+      alert('Board inválido!');
+      n = 5;
+    } else if (n < 5) {
+      n = 5;
+    } else if (n > 50) {
+      n = 50;
+    }
+    input.value = n;
+    // cria o tabuleiro de pixels com tamanho n * n
+    createBoard(n);
+  });
+}
+
 // setButtonClearBoard(): configura o botão que 'limpa' o tabuleiro de pixels
 // todos os pixels têm a cor alterada para branco
 function setButtonClearBoard() {
@@ -64,7 +87,6 @@ function setButtonClearBoard() {
     for (const pixel of pixels) {
       pixel.style.backgroundColor = 'white';
     }
-    // pixels.forEach((el, i, arr) => (arr[i].style.backgroundColor = 'white'));
   });
 }
 
@@ -75,5 +97,6 @@ window.onload = () => {
   // cria o tabuleiro de pixels com tamanho 5 x 5
   createBoard(5);
   // configura os event listeners dos botões
+  setButtonCreateBoard();
   setButtonClearBoard();
 };
