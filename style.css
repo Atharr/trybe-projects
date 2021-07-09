@@ -15,8 +15,20 @@ footer {
 input {
   background-color: white;
   border: none;
+  border-radius: 8px 0 0 8px;
   padding: 10px;
-  border-radius: 5px 0 0 5px;
+  margin-right: 0;
+  width: 80px;
+  transition: width 250ms;
+}
+
+input:focus {
+  outline: none;
+  width: 200px;
+}
+
+input:hover {
+  cursor: pointer;
 }
 
 strong {
@@ -26,3 +38,18 @@ strong {
 #funcionamento {
   font-style: italic;
 }
+
+#criar-tarefa {
+  background-color: green;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  padding: 10px;
+  margin-left: -4px;
+  color: white;
+}
+
+#criar-tarefa:hover {
+  cursor: pointer;
+  color: yellowgreen;
+}
+
