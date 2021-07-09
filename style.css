@@ -16,6 +16,6 @@ strong {
   color: darkslateblue;
 }
 
-p {
-  padding: 5px;
+#funcionamento {
+  text-emphasis-style: initial;
 }
