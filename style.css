@@ -35,6 +35,10 @@ strong {
   color: green;
 }
 
+.cinza {
+  background-color: gray;
+}
+
 #funcionamento {
   font-style: italic;
 }

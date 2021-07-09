@@ -1,3 +1,16 @@
+// setItemGray(event): atribui a classe .cinza a um elemento
+// a função checa se já existe um elemento com essa classe e a remove
+function setItemGray(event) {
+  // obtém o seletor do item com a classe .cinza
+  const itemcinza = document.querySelector('.cinza');
+  // se existe um item com a classe aplicada, remove-a
+  if (itemcinza) {
+    itemcinza.classList.remove('cinza');
+  }
+  // atribui a classe .cinza ao elemento
+  event.target.classList.add('cinza');
+}
+
 // setButtonSubmit(): configura o botão que acrescenta tarefas à lista
 function setButtonSubmit() {
   // acrescenta o event listener do botão #criar-tarefa
@@ -9,12 +22,10 @@ function setButtonSubmit() {
       return;
     }
     const tarefa = document.createElement('li'); // cria um elemento li
-    // copia o valor do input para a linha e apaga o input
-    tarefa.textContent = input.value;
-    input.value = '';
-    tarefa.addEventListener('click', (event) => {
-      event.target.style.setProperty('background', 'rgb(128, 128, 128)');
-    });
+    tarefa.textContent = input.value; // copia o valor do input para a linha...
+    input.value = ''; // ...e apaga o input
+    // acrescenta o event listener do item da lista
+    tarefa.addEventListener('click', setItemGray);
     // obtém o seletor da lista de tarefas e anexa a tarefa como filha
     document.querySelector('#lista-tarefas').appendChild(tarefa);
   });
