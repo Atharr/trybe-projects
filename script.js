@@ -12,6 +12,9 @@ function setButtonSubmit() {
     // copia o valor do input para a linha e apaga o input
     tarefa.textContent = input.value;
     input.value = '';
+    tarefa.addEventListener('click', (event) => {
+      event.target.style.setProperty('background', 'rgb(128, 128, 128)');
+    });
     // obtém o seletor da lista de tarefas e anexa a tarefa como filha
     document.querySelector('#lista-tarefas').appendChild(tarefa);
   });
