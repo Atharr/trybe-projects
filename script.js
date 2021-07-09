@@ -81,12 +81,10 @@ function setButtonCreateBoard() {
 function setButtonClearBoard() {
   // acrescenta o event listener ao botão
   document.querySelector('#clear-board').addEventListener('click', () => {
-    // obtém os filhos de pixel-board (pixels)
-    const pixels = document.querySelector('#pixel-board').children;
+    // obtém o seletor de todos os pixels
+    const pixels = document.querySelectorAll('.pixel');
     // altera a cor de cada pixel para branco
-    for (const pixel of pixels) {
-      pixel.style.backgroundColor = 'white';
-    }
+    pixels.forEach((i) => (i.style.setProperty('background', 'white')));
   });
 }
 
