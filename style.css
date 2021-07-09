@@ -1,10 +1,10 @@
 body {
-  background-color: rgb(220 , 250 , 220);
+  background-color: lightgreen;
   font-family: Impact, Haettenschweiler, sans-serif;
 }
 
 footer {
-  background-color: lightgreen;
+  background-color: rgb(179, 250, 179);
   padding: 10px;
   border-left: 5px solid green;
   position: fixed;
@@ -12,10 +12,17 @@ footer {
   width: 100%;
 }
 
+input {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
+}
+
 strong {
-  color: darkslateblue;
+  color: green;
 }
 
 #funcionamento {
-  text-emphasis-style: initial;
+  font-style: italic;
 }
