@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(220 , 250 , 220);
+  font-family: Impact, Haettenschweiler, sans-serif;
+}
+
+footer {
+  background-color: lightgreen;
+  padding: 10px;
+  border-left: 5px solid green;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+strong {
+  color: darkslateblue;
+}
+
+p {
+  padding: 5px;
+}
