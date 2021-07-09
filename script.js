@@ -14,7 +14,6 @@ function setItemGray(event) {
 // setItemCompleted(event): atribui/remove a classe .completed a um elemento
 // se o elemento não tem a classe atribuída, atribui; se já tem, retira
 function setItemCompleted(event) {
-  alert('double click');
   if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
   } else {
@@ -43,8 +42,34 @@ function setButtonSubmit() {
   });
 }
 
+// setButtonClearList(): configura o botão que limpa a lista
+function setButtonClearList() {
+  // acrescenta o event listener do botão #apaga-tudo
+  document.querySelector('#apaga-tudo').addEventListener('click', () => {
+    // obtém o seletor da lista de tarefas
+    const tarefas = document.querySelector('#lista-tarefas');
+    // remove os filhos (tarefas)
+    while (tarefas.firstChild) {
+      tarefas.removeChild(tarefas.lastChild);
+    }
+  });
+}
+
+// setButtonClearCompleted(): configura o botão que limpa as tarefas completadas
+function setButtonClearCompleted() {
+  // acrescenta o event listener do botão #remover-finalizados
+  document.querySelector('#remover-finalizados').addEventListener('click', () => {
+    // obtém os seletores de todos os items com a classe .completed
+    const tarefas = document.querySelectorAll('.completed');
+    // remove os elementos
+    tarefas.forEach((element) => element.parentElement.removeChild(element));
+  });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
   // configura os event listeners dos botões
   setButtonSubmit();
+  setButtonClearList();
+  setButtonClearCompleted();
 };
