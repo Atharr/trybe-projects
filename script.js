@@ -1,3 +1,6 @@
+// variável para guardar o seletor de #lista-tarefas
+let listaTarefas;
+
 // setItemGray(event): atribui a classe .cinza a um elemento
 // a função checa se já existe um elemento com essa classe e a remove
 function setItemGray(event) {
@@ -38,20 +41,37 @@ function setButtonSubmit() {
     tarefa.addEventListener('click', setItemGray);
     tarefa.addEventListener('dblclick', setItemCompleted);
     // obtém o seletor da lista de tarefas e anexa a tarefa como filha
-    document.querySelector('#lista-tarefas').appendChild(tarefa);
+    listaTarefas.appendChild(tarefa);
   });
+}
+
+// setButtonSaveList(): configura o botão que salva a lista no web storage
+function setButtonSaveList() {
+  // obtém o seletor do botão #salvar-tarefas
+  const salvar = document.querySelector('#salvar-tarefas');
+  // checa se há suporte a web storage
+  if (typeof (Storage) !== 'undefined') {
+    // acrescenta o event listener do botão #salvar-tarefas
+    salvar.addEventListener('click', () => {
+      localStorage.setItem(0, listaTarefas.innerHTML);
+    });
+  } else {
+    // desabilita o botão
+    salvar.innerHTML = 'Sem suporte a web storage!';
+    salvar.disabled = 'disabled';
+  }
 }
 
 // setButtonClearList(): configura o botão que limpa a lista
 function setButtonClearList() {
   // acrescenta o event listener do botão #apaga-tudo
   document.querySelector('#apaga-tudo').addEventListener('click', () => {
-    // obtém o seletor da lista de tarefas
-    const tarefas = document.querySelector('#lista-tarefas');
     // remove os filhos (tarefas)
-    while (tarefas.firstChild) {
-      tarefas.removeChild(tarefas.lastChild);
+    while (listaTarefas.firstChild) {
+      listaTarefas.removeChild(listaTarefas.lastChild);
     }
+    // apaga o localStorage
+    localStorage.clear();
   });
 }
 
@@ -68,8 +88,15 @@ function setButtonClearCompleted() {
 
 // executa as funções ao carregar a página
 window.onload = () => {
+  // obtém o seletor de #lista-tarefas
+  listaTarefas = document.querySelector('#lista-tarefas');
+  // carrega os objetos salvos no storage
+  if (localStorage.length > 0) {
+    listaTarefas.innerHTML = localStorage.getItem(0);
+  }
   // configura os event listeners dos botões
   setButtonSubmit();
+  setButtonSaveList();
   setButtonClearList();
   setButtonClearCompleted();
 };
