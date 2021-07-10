@@ -86,6 +86,44 @@ function setButtonClearCompleted() {
   });
 }
 
+// setButtonMoveUp(): configura o botão que move o item selecionado para cima
+function setButtonMoveUp() {
+  // acrescenta o event listener do botão #mover-cima
+  document.querySelector('#mover-cima').addEventListener('click', () => {
+    // obtém o seletor do elemento selecionado
+    const selectedItem = document.querySelector('.gray');
+    // se foi encontrado um elemento, e ele não é o primeiro, move o elemento
+    if (selectedItem && selectedItem.previousSibling) {
+      listaTarefas.insertBefore(selectedItem, selectedItem.previousSibling);
+    }
+  });
+}
+
+// setButtonMoveDown(): configura o botão que move o item selecionado para baixo
+function setButtonMoveDown() {
+  // acrescenta o event listener do botão #mover-baixo
+  document.querySelector('#mover-baixo').addEventListener('click', () => {
+    // obtém o seletor do elemento selecionado
+    const selectedItem = document.querySelector('.gray');
+    if (selectedItem && selectedItem.nextSibling) {
+      listaTarefas.insertBefore(selectedItem.nextSibling, selectedItem);
+    }
+  });
+}
+
+// setButtonRemoveSelected(): configura o botão que remove o item selecionado
+function setButtonRemoveSelected() {
+  // acrescenta o event listener do botão #remover-selecionado
+  document.querySelector('#remover-selecionado').addEventListener('click', () => {
+    // obtém o seletor do elemento selecionado
+    const selectedItem = document.querySelector('.gray');
+    // se foi encontrado um elemento, remove-o
+    if (selectedItem) {
+      selectedItem.parentNode.removeChild(selectedItem);
+    }
+  });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
   // obtém o seletor de #lista-tarefas
@@ -99,4 +137,7 @@ window.onload = () => {
   setButtonSaveList();
   setButtonClearList();
   setButtonClearCompleted();
+  setButtonMoveUp();
+  setButtonMoveDown();
+  setButtonRemoveSelected();
 };
