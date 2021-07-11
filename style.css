@@ -18,23 +18,30 @@ input {
   border: none;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+label {
+  margin: 10px;
+}
+
+#text-input {
+  padding: 13px;
   width: 150px;
   transition: width 500ms;
 }
 
-input:focus {
+#text-input:focus {
   outline: none;
   width: 300px;
 }
 
 input:hover {
   cursor: pointer;
-}
-
-img {
-  width: 100%;
-  height: auto;
 }
 
 button {
@@ -55,17 +62,20 @@ strong {
 }
 
 #meme-image-container {
-  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 10px auto;
+  overflow: hidden;
 }
 
 #meme-text {
-  position: absolute;
-  bottom: 5%;
-  width: 100%;
-  text-align: center;
+  position: sticky;
+  bottom: 0;
+  width: auto;
   color: white;
   font-family: Impact, Haettenschweiler, sans-serif;
   font-size: 30px;
+  text-align: center;
   text-transform: uppercase;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

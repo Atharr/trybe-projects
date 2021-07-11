@@ -11,11 +11,16 @@
 <body>
   <header><h1>Meme Generator</h1></header>
   <main>
-    <input type="text" id="text-input" placeholder="Digite seu meme...">
-    <p>Resultado:</p>
-    <div id="meme-image-container">
+    <section>
+      <label for="meme-insert">Foto: </label>
+      <input type="file" name="meme-insert" id="meme-insert" accept="image/*">
+      <label for="text-input">Texto: </label>
+      <input type="text" id="text-input" placeholder="Digite seu meme...">
+    </section>
+    <section id="meme-image-container">
+      <img id="meme-image" src="">
       <div id="meme-text"></div>
-    </div>
+    </section>
   </main>
   <footer>Projeto executado por <strong>Marcello Pires Alves</strong>, Turma 14, Tribo A.</footer>
 </body>
