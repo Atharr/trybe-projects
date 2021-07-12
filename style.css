@@ -1,0 +1,16 @@
+body {
+  background-color: lightgray;
+  font-family: Gill Sans, Calibri, sans-serif;
+  text-align: center;
+}
+
+footer {
+  background-color: gray;
+  padding: 10px;
+  border-left: 5px solid black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+}
