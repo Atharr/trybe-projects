@@ -45,14 +45,35 @@ input:hover {
 }
 
 button {
-  background-color: green;
   border: none;
   border-radius: 5px;
   padding: 10px;
   color: white;
 }
 
-.button:hover {
+.button-red {
+  background-color: red;
+}
+
+.button-red:hover {
+  cursor: pointer;
+  color: pink;
+}
+
+.button-blue {
+  background-color: blue;
+}
+
+.button-blue:hover {
+  cursor: pointer;
+  color: lightblue;
+}
+
+.button-green {
+  background-color: green;
+}
+
+.button-green:hover {
   cursor: pointer;
   color: yellowgreen;
 }

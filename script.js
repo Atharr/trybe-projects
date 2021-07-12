@@ -1,8 +1,9 @@
+// seletor do container #meme-image-container
+let memeImageContainer;
+
 // setContainerSize(event): ajusta #meme-image-container ao tamanho da imagem #meme-image
 // isso precisa ser feito no evento onload, pois o tamanho só está definido após a imagem ser carregada!
 function setContainerSize(event) {
-  // obtém o seletor do container #meme-image-container
-  const memeImageContainer = document.getElementById('meme-image-container');
   // obtém o fator de escala da imagem, caso ela seja menor que o tamanho do container
   const f = 400 / event.target.naturalWidth;
   // obtém as dimensões da imagem, ajustando-as caso necessário (fator de escala > 1)
@@ -37,9 +38,41 @@ function setTextInput() {
   });
 }
 
+// setButtonFire(): configura o botão #fire
+function setButtonFire() {
+  // acrescenta o event listener do botão #fire
+  document.getElementById('fire').addEventListener('click', () => {
+    // modifica o estilo do container #meme-image-container
+    memeImageContainer.style.setProperty('border', '3px dashed red');
+  });
+}
+
+// setButtonWater(): configura o botão #water
+function setButtonWater() {
+  // acrescenta o event listener do botão #water
+  document.getElementById('water').addEventListener('click', () => {
+    // modifica o estilo do container #meme-image-container
+    memeImageContainer.style.setProperty('border', '5px double blue');
+  });
+}
+
+// setButtonEarth(): configura o botão #earth
+function setButtonEarth() {
+  // acrescenta o event listener do botão #earth
+  document.getElementById('earth').addEventListener('click', () => {
+    // modifica o estilo do container #meme-image-container
+    memeImageContainer.style.setProperty('border', '6px groove green');
+  });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
+  // obtém o seletor do container #meme-image-container
+  memeImageContainer = document.getElementById('meme-image-container');
   // configura os event listeners
   setMemeInsert();
   setTextInput();
+  setButtonFire();
+  setButtonWater();
+  setButtonEarth();
 };
