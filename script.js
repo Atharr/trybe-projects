@@ -33,13 +33,17 @@ function createSpan(texto) {
 function setButtonCriar() {
   const cartaTexto = document.getElementById('carta-texto'); // obtém o seletor do input #carta-texto
   const cartaGerada = document.getElementById('carta-gerada'); // obtém o seletor do parágrafo #carta-gerada
-  // acrescenta o event listener do botão #criar-carta
-  document.getElementById('criar-carta').addEventListener('click', () => {
+  const cartaContador = document.getElementById('carta-contador'); // obtém o seletor do parágrafo #carta-contador
+  document.getElementById('criar-carta').addEventListener('click', () => { // acrescenta o event listener do botão #criar-carta
     while (cartaGerada.firstChild) { // elimina todos os elementos filhos de #carta-gerada
       cartaGerada.removeChild(cartaGerada.lastChild);
     }
     if (/\S/.test(cartaTexto.value)) { // testa se o texto possui algo além de whitespace
       const texto = cartaTexto.value.split(' '); // separa o texto em um array de palavras
+      while (cartaContador.firstChild) { // elimina todos os elementos filhos de #carta-contador
+        cartaContador.removeChild(cartaContador.lastChild);
+      }
+      cartaContador.appendChild(document.createTextNode(texto.length)); // coloca o número de palavras em #carta-contador
       texto.forEach((element) => { cartaGerada.appendChild(createSpan(element)); }); // acrescenta a palavra ao parágrafo #carta-gerada
     } else {
       cartaGerada.appendChild(document.createTextNode('Por favor, digite o conteúdo da carta.')); // se nada foi digitado, mostra mensagem de erro
