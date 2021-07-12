@@ -65,6 +65,18 @@ function setButtonEarth() {
   });
 }
 
+// setImgThumbnail(): configura as imagens da classe .thumbnail
+function setImgThumbnail() {
+  // obtém os seletores das imagens
+  [...document.getElementsByClassName('thumbnail')].forEach((element) => {
+    // adiciona o event listener a cada thumbnail
+    element.addEventListener('click', (event) => {
+      // obtém o seletor da img #meme-image e copia a imagem selecionada para ela
+      document.getElementById('meme-image').src = event.target.src;
+    });
+  });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
   // obtém o seletor do container #meme-image-container
@@ -75,4 +87,5 @@ window.onload = () => {
   setButtonFire();
   setButtonWater();
   setButtonEarth();
+  setImgThumbnail();
 };

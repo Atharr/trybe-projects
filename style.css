@@ -20,11 +20,6 @@ input {
   padding: 10px;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-}
-
 label {
   margin: 10px;
 }
@@ -49,6 +44,20 @@ button {
   border-radius: 5px;
   padding: 10px;
   color: white;
+}
+
+.thumbnail {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 3px;
+  vertical-align: middle;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
 }
 
 .button-red {
@@ -89,6 +98,11 @@ strong {
   height: 400px;
   margin: 10px auto;
   overflow: hidden;
+}
+
+#meme-image {
+  width: 100%;
+  height: 100%;
 }
 
 #meme-text {
