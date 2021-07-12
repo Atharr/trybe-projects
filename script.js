@@ -24,6 +24,8 @@ function createSpan(texto) {
   span.textContent = texto;
   // atribui classes aleatórias ao elemento
   randomClasses(span);
+  // acrescenta o event listener do span
+  span.addEventListener('click', (event) => { randomClasses(event.target); });
   return span;
 }
 
