@@ -11,8 +11,17 @@ body {
   font-family: sans-serif;
 }
 
+p {
+  padding: 10px;
+  text-align: center;
+}
+
 span {
   padding: 5px;
+}
+
+span:hover {
+  cursor: pointer;
 }
 
 footer {
