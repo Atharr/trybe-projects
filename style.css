@@ -22,7 +22,7 @@ input {
 
 img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 label {
@@ -62,6 +62,8 @@ strong {
 }
 
 #meme-image-container {
+  background-color: white;
+  border: 1px solid black;
   width: 400px;
   height: 400px;
   margin: 10px auto;
@@ -77,5 +79,7 @@ strong {
   font-size: 30px;
   text-align: center;
   text-transform: uppercase;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+  /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+  text-shadow: 5px 5px 5px black;
 }
