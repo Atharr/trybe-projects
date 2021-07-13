@@ -1,5 +1,3 @@
-let rgbColor; // seletor do span #rgb-color
-
 // randomColor(): gera uma cor aleatoria no formato rgb(r,g,b)
 // cada componente pode variar entre 0 e 255
 function randomColor() {
@@ -11,7 +9,7 @@ function randomColor() {
   return `rgb(${r},${g},${b})`;
 }
 
-// removeAllChilds(): remove todos os filhos de um elemento
+// removeAllChilds(element): remove todos os filhos de um elemento
 // o elemento precisa ser do tipo nodeList
 function removeAllChilds(element) {
   while (element.firstChild) {
@@ -33,7 +31,7 @@ function wrongColor() {
 // o parâmetro n determina quantas cores são adicionadas à paleta
 function createPalette(n) {
   const palette = document.getElementById('color-palette'); // obtém o seletor da #color-palette
-  removeAllChilds(palette);
+  removeAllChilds(palette); // remove todos os filhos (cores)
   const x = Math.floor(Math.random() * n); // sorteia um número
   // acrescenta as cores à color-palette
   for (let i = 0; i < n; i += 1) {
@@ -44,16 +42,21 @@ function createPalette(n) {
     color.addEventListener('click', (i === x ? rightColor : wrongColor)); // acrescenta o event listener apropriado
     palette.appendChild(color); // anexa a div color como filha de color-palette
     if (i === x) {
-      rgbColor.textContent = rnd; // se for a cor sorteada, guarda em rgbColor
+      document.getElementById('rgb-color').textContent = rnd; // se for a cor sorteada, guarda em #rgb-color
     }
     document.getElementById('answer').textContent = 'Escolha uma cor'; // inicializa a mensagem ao usuário
   }
 }
 
+function setButtonResetGame() {
+  // adiciona o event listener ao botão #reset-game
+  document.getElementById('reset-game').addEventListener('click', () => { createPalette(6); });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
-  // obtém o seletor do span #rgb-color
-  rgbColor = document.getElementById('rgb-color');
-  // cria a paleta de cores com 4 elementos
+  // cria a paleta de cores com 6 elementos
   createPalette(6);
+  // configura o event listener do botão
+  setButtonResetGame();
 };

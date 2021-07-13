@@ -16,6 +16,19 @@ footer {
   text-align: left;
 }
 
+button {
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  color: lightgray;
+}
+
 #color-palette {
   width: 40%;
   height: 10%;
@@ -29,4 +42,9 @@ footer {
   border: 1px solid black;
   border-radius: 50%;
   margin: 5px;
+}
+
+.ball:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
 }
