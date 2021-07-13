@@ -1,3 +1,6 @@
+// status do jogo
+let gameReady;
+
 // randomColor(): gera uma cor aleatoria no formato rgb(r,g,b)
 // cada componente pode variar entre 0 e 255
 function randomColor() {
@@ -19,12 +22,19 @@ function removeAllChilds(element) {
 
 // rightColor(): realiza as ações quando o usuário escolhe a cor certa
 function rightColor() {
-  document.getElementById('answer').textContent = 'Acertou!'; // indica acerto ao usuário
+  if (gameReady) {
+    const placar = document.getElementById('score'); // obtém o seletor do span #score
+    document.getElementById('answer').textContent = 'Acertou!'; // indica acerto ao usuário
+    placar.textContent = parseInt(placar.textContent, 10) + 3; // atualiza o placar
+    gameReady = false; // encerra o jogo
+  }
 }
 
 // wrongColor(): realiza as ações quando o usuário escolhe a cor errada
 function wrongColor() {
-  document.getElementById('answer').textContent = 'Errou! Tente novamente!'; // indica erro ao usuário
+  if (gameReady) {
+    document.getElementById('answer').textContent = 'Errou! Tente novamente!'; // indica erro ao usuário
+  }
 }
 
 // createPalette(): monta a paleta e configura as cores
@@ -46,6 +56,7 @@ function createPalette(n) {
     }
     document.getElementById('answer').textContent = 'Escolha uma cor'; // inicializa a mensagem ao usuário
   }
+  gameReady = true; // indica que o jogo está pronto
 }
 
 function setButtonResetGame() {
@@ -59,4 +70,6 @@ window.onload = () => {
   createPalette(6);
   // configura o event listener do botão
   setButtonResetGame();
+  // inicializa o placar
+  document.getElementById('score').textContent = 0;
 };
