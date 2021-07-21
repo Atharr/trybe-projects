@@ -12,8 +12,18 @@ function setButtonLoginSubmit() {
   });
 }
 
+// setCheckAgreement(): configura o checkbox #agreement para habilitar o botão de submit
+function setCheckAgreement() {
+  // obtém o seletor do checkbox #agreement e acrescenta o event listener
+  document.getElementById('agreement').addEventListener('click', (event) => {
+    // obtém o seletor do botão #submit-btn e habilita-o caso o checkbox esteja selecionado
+    document.getElementById('submit-btn').disabled = !event.target.checked;
+  });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
   // configura os event listeners
   setButtonLoginSubmit();
+  setCheckAgreement();
 };
