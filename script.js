@@ -21,9 +21,21 @@ function setCheckAgreement() {
   });
 }
 
+// setTextArea(): configura a textarea para atualizar o contador #counter
+function setTextArea() {
+  // obtém o seletor da textarea e acrescenta o event listener
+  document.getElementById('textarea').addEventListener('input', (event) => {
+    // obtém o atributo maxlength da textarea
+    const maxLength = event.target.getAttribute('maxlength');
+    // guarda no span #counter a diferença entre maxLength e o tamanho atual do texto
+    document.getElementById('counter').textContent = maxLength - event.target.value.length;
+  });
+}
+
 // executa as funções ao carregar a página
 window.onload = () => {
   // configura os event listeners
   setButtonLoginSubmit();
   setCheckAgreement();
+  setTextArea();
 };
