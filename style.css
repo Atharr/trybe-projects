@@ -23,6 +23,10 @@ hr {
   margin: 10px 0;
 }
 
+label {
+  padding: 0 5px;
+}
+
 .header {
   background-color: rgb(50, 167, 145);
   display: flex;
@@ -36,6 +40,14 @@ hr {
   flex-direction: column;
   align-items: left;
   min-width: 35%;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 #trybewarts-header-title {
