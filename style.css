@@ -14,6 +14,10 @@ main {
   padding: 2% 5%;
 }
 
+main h1 {
+  text-align: center;
+}
+
 select {
   flex-grow: 1;
   flex-shrink: 1;
@@ -48,6 +52,10 @@ label {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
+}
+
+.input {
+  width: 49%;
 }
 
 #trybewarts-header-title {
