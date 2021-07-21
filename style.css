@@ -1,8 +1,17 @@
+* {
+  font-family: Inknut Antiqua, Times, serif;
+  font-weight: 900;
+}
+
 .header {
   background-color: rgb(50, 167, 145);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#trybewarts-header-title {
+  color: white;
 }
 
 .trybewarts-header-logo {
