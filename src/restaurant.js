@@ -79,6 +79,41 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, 
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// createOrder(item): adiciona item no array consumption, sem checar se o item existe no menu
+function createOrder(item) {
+  return this.consumption.push(item);
+}
+
+// payConsumption(): calcula o pagamento do consumo registrado no array consumption
+function payConsumption() {
+  // lê o menu
+  const menu = this.fetchMenu();
+  
+  // retorna o total acrescido de 10%
+  return 1.1 * this.consumption.reduce((total, item) => {
+    // se o item está na lista de comidas...
+    if (Object.keys(menu.food).includes(item)) {
+      // ...soma seu valor
+      total += menu.food[item];
+    // se o item está na lista de bebidas...
+    } else if (Object.keys(menu.drink).includes(item)) {
+      // ...soma seu valor
+      total += menu.drink[item];
+    }
+    return total;
+  }, 0);
+}
+
+// createMenu(menu): retorna um objeto com o menu fornecido como parâmetro
+const createMenu = (menu) => ({
+  // função que retorna o menu com o qual o objeto foi inicializado
+  fetchMenu: () => menu,
+  // array que guarda o consumo, inicializado como vazio
+  consumption: [],
+  // função que recebe um pedido e o inclui no array consumption
+  order: createOrder,
+  // fecha o consumo e soma o total a pagar
+  pay: payConsumption,
+});
 
 module.exports = createMenu;
