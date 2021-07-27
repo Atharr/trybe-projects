@@ -16,11 +16,13 @@
 */
 
 const myCounter = () => {
-  var myArray = [];
-  for (var counter = 0; counter <= 3; counter += 1) {
+  let myArray = [];
+  // basta trocar var por let que pára de vazar o escopo!!! :)
+  for (let counter = 0; counter <= 3; counter += 1) {
     myArray.push(counter);
-    for (var counter = 2; counter <= 3; counter += 1) {
-      myArray.push(counter);
+    // apesar de trocar var por let resolver, o lint acha ruim ter variável com o mesmo nome de uma do upper scope... :/
+    for (let counter2 = 2; counter2 <= 3; counter2 += 1) {
+      myArray.push(counter2);
     }
   }
   return myArray;
