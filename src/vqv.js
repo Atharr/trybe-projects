@@ -16,15 +16,9 @@
       #VQV!'
 */
 
-const vqv = (TWFyY2VsbG8, QWx2ZXM) => {
-  // verifica se os parâmetros foram passados...
-  if (TWFyY2VsbG8 === undefined && QWx2ZXM === undefined) {
-    // ...do contrário, retorna undefined
-    return undefined;
-  }
+const vqv = (TWFyY2VsbG8, QWx2ZXM) => TWFyY2VsbG8 && QWx2ZXM // verifica se os parâmetros foram passados...
   // retorna uma string montada com os parâmetros recebidos 
-  return `Oi, meu nome é ${TWFyY2VsbG8}!\nTenho ${QWx2ZXM} anos,
+  && `Oi, meu nome é ${TWFyY2VsbG8}!\nTenho ${QWx2ZXM} anos,\n\
 trabalho na Trybe e mando muito em programação!\n#VQV!`;
-};
 
 module.exports = vqv;
