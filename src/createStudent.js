@@ -15,6 +15,13 @@
     estudante.feedback() // Retorna: 'Eita pessoa boa!'
 */
 
-const createStudent = () => {};
+// createStudent: recebe um nome como parâmetro e retorna um objeto com nome e feedback
+// TWFyY2VsbG8gQWx2ZXM=
+const createStudent = (name) => {
+  // define a função feedback que retorna uma string constante
+  const feedback = () => 'Eita pessoa boa!';
+  // retorna um objeto com nome e feedback
+  return { name, feedback };
+};
 
 module.exports = createStudent;
