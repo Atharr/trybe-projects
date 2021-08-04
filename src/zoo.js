@@ -8,6 +8,8 @@ function getSpeciesByIds(...args) {
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
+  // pesquisa se o nome de alguma espécie corresponde ao nome fornecido, e verifica se todos os residentes têm a idade mínima
+  return data.species.some((el) => (el.name === animal) && el.residents.every((r) => r.age >= age));
 }
 
 function getEmployeeByName(employeeName) {
