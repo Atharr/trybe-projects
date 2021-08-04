@@ -38,6 +38,20 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function countAnimals(species) {
   // seu código aqui
+  // nenhuma espécie indicada; retorna um objeto com cada espécie e seu respectivo número de residentes
+  if (!species) {
+    // popula o objeto anmialsCount com cada espécie e seu número de residentes
+    return data.species.reduce((animalsCount, element) => {
+      // declara uma variável temporária, para evitar regra do lint de assignment na variável acumuladora
+      const temp = animalsCount;
+      // cria chave com o nome da espécie e o número de residentes
+      temp[element.name] = element.residents.length;
+      // retorna a variável temporária (===animalCount) atualizada
+      return temp;
+    }, {});
+  }
+  // se foi fornecida uma espécie, retorna seu número de residentes
+  return data.species.find((element) => (element.name === species)).residents.length;
 }
 
 function calculateEntry(entrants) {
