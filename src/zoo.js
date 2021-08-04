@@ -20,6 +20,8 @@ function getEmployeeByName(name) {
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
+  // retorna a união dos dois objetos recebidos nos parâmetros
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
