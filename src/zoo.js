@@ -56,6 +56,13 @@ function countAnimals(species) {
 
 function calculateEntry(entrants) {
   // seu código aqui
+  try {
+    // calcula o valot total, multiplicando os números de entradas pelos valores correspondentes
+    return Object.keys(entrants).reduce((tot, key) => tot + entrants[key] * data.prices[key], 0);
+  } catch (err) {
+    // se nenhum parâmetro for passado, ou se o parâmetro for um objeto vazio, retorna 0
+    return 0;
+  }
 }
 
 function getAnimalMap(options) {
