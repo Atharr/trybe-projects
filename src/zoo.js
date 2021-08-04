@@ -111,6 +111,11 @@ function getOldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   // seu código aqui
+  // altera todos os preços
+  return Object.keys(data.prices).forEach((key) => {
+    // aplica o reajuste percentual, ajustando com duas casas decimais
+    data.prices[key] = Math.ceil(data.prices[key] * (percentage + 100)) / 100;
+  });
 }
 
 function getEmployeeCoverage(idOrName) {
