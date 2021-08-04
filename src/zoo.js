@@ -97,6 +97,16 @@ function getSchedule(dayName) {
 
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
+  // localiza o id da primeira espécie pela qual o funcionário é responsável
+  const firstSpecies = data.employees.find((employee) => employee.id === id).responsibleFor[0];
+  // localiza o residente mais velho da espécie localizada...
+  const oldest = data.species
+    // ...obtendo o array dos residentes da espécie...
+    .find((species) => firstSpecies.includes(species.id)).residents
+    // ...e ordenando-os por ordem decrescente de idade e retornando o primeiro elemento
+    .sort((a, b) => b.age - a.age)[0];
+  // retorna os valores do objeto do residente na forma de array
+  return Object.values(oldest);
 }
 
 function increasePrices(percentage) {
