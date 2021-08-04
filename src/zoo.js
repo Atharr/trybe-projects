@@ -67,6 +67,23 @@ function calculateEntry(entrants) {
 
 function getAnimalMap(options) {
   // seu código aqui
+  // declara objeto com localizações esperadas; cada localização é um array, inicialmente vazio
+  const locations = { NE: [], NW: [], SE: [], SW: [] };
+  // se nenhuma opção foi passada, ou se includeNames é false...
+  if (!options || !options.includeNames) {
+    // ...para cada espécie, acrescenta apenas o nome da espécie
+    data.species.forEach((spec) => locations[spec.location].push(spec.name));
+    return locations;
+  }
+  // se includeNames é true, acrescenta um objeto cuja chave é o nome da espécie...
+  data.species.forEach((spec) => locations[spec.location].push({ [spec.name]: spec.residents
+    // ...(se a opção sex foi especificada, filtra os residentes pelo sexo informado)...
+    .filter((resident) => (!options.sex || (resident.sex === options.sex)))
+    // ...(se a opção sorted foi especificada, ordena os resultados)...
+    .sort(options.sorted ? (a, b) => a.name.localeCompare(b.name) : () => 0)
+    // ...e o valor um array com os nomes dos residentes
+    .map((resident) => resident.name) }));
+  return locations;
 }
 
 function getSchedule(dayName) {
