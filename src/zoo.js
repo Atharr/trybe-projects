@@ -120,6 +120,16 @@ function increasePrices(percentage) {
 
 function getEmployeeCoverage(idOrName) {
   // seu código aqui
+  // coverage(employee) retorna um objeto com o nome formatado do funcionário e um array com os nomes das espécies de que ele cuida
+  const coverage = (employee) => ({ [`${employee.firstName} ${employee.lastName}`]:
+    employee.responsibleFor.map((id) => data.species.find((species) => species.id === id).name) });
+  // se nenhum parâmetro foi fornecido...
+  if (!idOrName) {
+    // ...retorna uma lista de todos os funcionários com as respectivas coberturas
+    return data.employees.reduce((list, employee) => Object.assign(list, coverage(employee)), {});
+  }
+  // se foi fornecido um nome ou id, retorna um objeto com a cobertura daquele funcionário
+  return coverage(data.employees.find((e) => e.id === idOrName) || getEmployeeByName(idOrName));
 }
 
 module.exports = {
