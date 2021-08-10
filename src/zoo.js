@@ -111,10 +111,15 @@ function getOldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   // seu código aqui
+  // função custom para evitar os erros de arredondamento do JavaScript
+  const round = (num) => {
+    const m = Number((Math.abs(num) * 100).toPrecision(15));
+    return (Math.round(m) / 100) * Math.sign(num);
+  };
   // altera todos os preços
   return Object.keys(data.prices).forEach((key) => {
     // aplica o reajuste percentual, ajustando com duas casas decimais
-    data.prices[key] = Math.ceil(data.prices[key] * (percentage + 100)) / 100;
+    data.prices[key] = round((data.prices[key] * (percentage + 100)) / 100);
   });
 }
 
