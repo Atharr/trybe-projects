@@ -99,23 +99,28 @@ async function getProducts(query) {
   }
 }
 
+// emptyCart(): limpa todos os itens do carrinho, o total e o localStorage
+function emptyCart() {
+  sel.cartItems.innerHTML = null; // limpa todos os itens do carrinho
+  totalPrice.clear(); // limpa o total do carrinho
+  localStorage.clear(); // apaga o localStorage
+}
+
 window.onload = () => {
-  // Query a ser usada no projeto
-  const QUERY = 'computador';
-  // Endpoint do MLB
-  const endpoint = `${baseURL}sites/MLB/search?q=${QUERY}`;
-  
-  // Carrega o objeto sel com seletores de elementos do documento
+  // endpoint do MLB
+  const queryEndpoint = `${baseURL}sites/MLB/search?q=computador`;
+  // carrega o objeto sel com seletores de elementos do documento
   sel.cartItems = document.querySelector('.cart__items'); // obtém o seletor da ol .cart__items
   sel.items = document.querySelector('.items'); // obtém o seletor da section .items
   sel.totalPrice = document.querySelector('.total-price'); // obtém o seletor do span .total-price
-  
-  // Busca lista de produtos no endpoint do MLB
-  getProducts(endpoint);
+  // busca lista de produtos no endpoint do MLB
+  getProducts(queryEndpoint);
   // carrega o carrinho do localStorage
   if (localStorage.length > 0) {
     sel.cartItems.innerHTML = localStorage.getItem(0); // carrega os objetos salvos no LocalStorage
     document.querySelectorAll('.cart__item').forEach((item) =>
       item.addEventListener('click', cartItemClickListener)); // torna a acrescentar o event listener nos itens
   }
+  // acrescenta o event listener ao botão .empty-cart
+  document.querySelector('.empty-cart').addEventListener('click', emptyCart);
 };
