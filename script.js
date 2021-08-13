@@ -84,11 +84,13 @@ function createProductItemElement({ sku, name, image }) {
 // getProducts(query): função assíncrona que busca produtos na API do MLB e gera itens na página
 async function getProducts(query) {
   try {
+    sel.items.innerHTML = '<p class="loading">loading</p>'; // escreve a mensagem de carregamento
     const responseRaw = await fetch(query); // busca no endpoint, recebe resultado 'cru'
     const responseJSON = await responseRaw.json(); // converte resultado 'cru' em JSON
     if (!responseJSON.results.length) { // se nenhum resultado foi obtido...
       throw new Error('Nenhum resultado encontrado!'); // ...envia mensagem de erro
     }
+    sel.items.innerHTML = null; // limpa a mensagem de carregamento
     // Cria um elemento para cada produto retornado
     responseJSON.results.forEach((product) => {
       const item = { sku: product.id, name: product.title, image: product.thumbnail }; // obtém id, nome e thumbnail do produto
