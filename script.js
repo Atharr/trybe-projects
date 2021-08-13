@@ -1,5 +1,7 @@
 // Dados da API do MLB
 const baseURL = 'https://api.mercadolibre.com/';
+// Seletores de objetos do documento
+const sel = {};
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -17,6 +19,7 @@ function createCustomElement(element, className, innerText) {
 
 function cartItemClickListener(event) {
   // coloque seu código aqui
+  event.target.parentNode.removeChild(event.target); // o item pede ao elemento-pai que o remova
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -33,7 +36,6 @@ function getSkuFromProductItem(item) {
 
 // getItem(event): event listener assíncrono para o botão de um item, que acrescenta o item ao carrinho de compras
 async function getItem(event) { 
-  const olCartItems = document.querySelector('.cart__items'); // obtém o seletor da ol .cart__items
   const itemEndpoint = `${baseURL}items/${getSkuFromProductItem(event.target.parentNode)}`; // monta a query a partir do sku do item
   try {
     const responseRaw = await fetch(itemEndpoint); // busca no endpoint, recebe resultado 'cru'
@@ -42,7 +44,7 @@ async function getItem(event) {
       throw new Error('Item não encontrado!'); // ...envia mensagem de erro
     }
     const item = { sku: responseJSON.id, name: responseJSON.title, salePrice: responseJSON.price }; // obtém id, nome e thumbnail do produto
-    olCartItems.appendChild(createCartItemElement(item)); // cria o item e o acrescenta à section .items
+    sel.cartItems.appendChild(createCartItemElement(item)); // cria o item e o acrescenta à section .items
   } catch (error) { // em caso de erro...
     alert(`[Erro]: ${error}`); // ...exibe caixa de diálogo com mensagem de erro
   }
@@ -65,7 +67,6 @@ function createProductItemElement({ sku, name, image }) {
 // getProducts(query): função assíncrona que busca produtos na API do MLB e gera itens na página
 async function getProducts(query) {
   try {
-    const sectionItems = document.querySelector('.items'); // obtém o seletor da section .items
     const responseRaw = await fetch(query); // busca no endpoint, recebe resultado 'cru'
     const responseJSON = await responseRaw.json(); // converte resultado 'cru' em JSON
     if (!responseJSON.results.length) { // se nenhum resultado foi obtido...
@@ -74,7 +75,7 @@ async function getProducts(query) {
     // Cria um elemento para cada produto retornado
     responseJSON.results.forEach((product) => {
       const item = { sku: product.id, name: product.title, image: product.thumbnail }; // obtém id, nome e thumbnail do produto
-      sectionItems.appendChild(createProductItemElement(item)); // cria o item e o acrescenta à section .items
+      sel.items.appendChild(createProductItemElement(item)); // cria o item e o acrescenta à section .items
     });
   } catch (error) { // em caso de erro...
     alert(`[Erro]: ${error}`); // ...exibe caixa de diálogo com mensagem de erro
@@ -86,6 +87,11 @@ window.onload = () => {
   const QUERY = 'computador';
   // Endpoint do MLB
   const endpoint = `${baseURL}sites/MLB/search?q=${QUERY}`;
+  
+  // Carrega o objeto sel com seletores de elementos do documento
+  sel.cartItems = document.querySelector('.cart__items'); // obtém o seletor da ol .cart__items
+  sel.items = document.querySelector('.items'); // obtém o seletor da section .items
+  
   // Busca lista de produtos no endpoint do MLB
   getProducts(endpoint);
 };
