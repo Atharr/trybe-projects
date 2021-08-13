@@ -20,6 +20,7 @@ function createCustomElement(element, className, innerText) {
 function cartItemClickListener(event) {
   // coloque seu código aqui
   event.target.parentNode.removeChild(event.target); // o item pede ao elemento-pai que o remova
+  localStorage.setItem(0, sel.cartItems.innerHTML); // salva o carrinho no LocalStorage
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -45,6 +46,7 @@ async function getItem(event) {
     }
     const item = { sku: responseJSON.id, name: responseJSON.title, salePrice: responseJSON.price }; // obtém id, nome e thumbnail do produto
     sel.cartItems.appendChild(createCartItemElement(item)); // cria o item e o acrescenta à section .items
+    localStorage.setItem(0, sel.cartItems.innerHTML); // salva o carrinho no LocalStorage
   } catch (error) { // em caso de erro...
     alert(`[Erro]: ${error}`); // ...exibe caixa de diálogo com mensagem de erro
   }
@@ -94,4 +96,10 @@ window.onload = () => {
   
   // Busca lista de produtos no endpoint do MLB
   getProducts(endpoint);
+  // carrega o carrinho do localStorage
+  if (localStorage.length > 0) {
+    sel.cartItems.innerHTML = localStorage.getItem(0); // carrega os objetos salvos no LocalStorage
+    document.querySelectorAll('.cart__item').forEach((item) =>
+      item.addEventListener('click', cartItemClickListener)); // torna a acrescentar o event listener nos itens
+  }
 };
