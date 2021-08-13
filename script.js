@@ -3,6 +3,19 @@ const baseURL = 'https://api.mercadolibre.com/';
 // Seletores de objetos do documento
 const sel = {};
 
+// totalPrice: objeto que atualiza o preço total do carrinho
+const totalPrice = {
+  add: (price) => {
+    sel.totalPrice.innerText = Math.round((Number(sel.totalPrice.innerText)
+      + Number(price)) * 100) / 100;
+  }, // soma o preço do item ao total do carrinho
+  sub: (price) => {
+    sel.totalPrice.innerText = Math.round((Number(sel.totalPrice.innerText)
+      - Number(price)) * 100) / 100;
+  }, // subtrai o preço o item do total do carrinho
+  clear: () => { sel.totalPrice.innerText = '0.00'; }, // limpa o total do carrinho
+};
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -19,6 +32,7 @@ function createCustomElement(element, className, innerText) {
 
 function cartItemClickListener(event) {
   // coloque seu código aqui
+  totalPrice.sub(event.target.innerText.split('PRICE: $')[1]); // subtrai o preço do item do total do carrinho
   event.target.parentNode.removeChild(event.target); // o item pede ao elemento-pai que o remova
   localStorage.setItem(0, sel.cartItems.innerHTML); // salva o carrinho no LocalStorage
 }
@@ -46,6 +60,7 @@ async function getItem(event) {
     }
     const item = { sku: responseJSON.id, name: responseJSON.title, salePrice: responseJSON.price }; // obtém id, nome e thumbnail do produto
     sel.cartItems.appendChild(createCartItemElement(item)); // cria o item e o acrescenta à section .items
+    totalPrice.add(responseJSON.price); // soma o preço do item ao total do carrinho
     localStorage.setItem(0, sel.cartItems.innerHTML); // salva o carrinho no LocalStorage
   } catch (error) { // em caso de erro...
     alert(`[Erro]: ${error}`); // ...exibe caixa de diálogo com mensagem de erro
@@ -93,6 +108,7 @@ window.onload = () => {
   // Carrega o objeto sel com seletores de elementos do documento
   sel.cartItems = document.querySelector('.cart__items'); // obtém o seletor da ol .cart__items
   sel.items = document.querySelector('.items'); // obtém o seletor da section .items
+  sel.totalPrice = document.querySelector('.total-price'); // obtém o seletor do span .total-price
   
   // Busca lista de produtos no endpoint do MLB
   getProducts(endpoint);
