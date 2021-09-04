@@ -18,11 +18,33 @@ export default class AddMovie extends React.Component {
     };
   }
 
+  // event handler para o evento onChange
+  handleChange = ({ target }) => this.setState({
+    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
+  });
+
+  // createInput: cria um elemento input customizado e seu label associado
+  createInput(type, name, value, dataTestid) {
+    return (
+      <input
+        type={ type }
+        name={ name }
+        value={ value }
+        onChange={ this.handleChange }
+        data-testid={ dataTestid }
+      />
+    );
+  }
+
   render() {
     // desestrutura this.state
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
+        <label htmlFor="title" data-testid="title-input-label">
+          Título
+          { this.createInput('text', 'title', title, 'title-input') }
+        </label>
       </form>
     );
   }
