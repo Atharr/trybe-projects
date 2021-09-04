@@ -16,7 +16,7 @@ export default class SearchBar extends React.Component {
 
     return (
       // produz o form de pesquisa de filmes
-      <form>
+      <form data-testid="search-bar-form">
       </form>
     );
   }
