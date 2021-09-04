@@ -27,8 +27,15 @@ export default class MovieLibrary extends React.Component {
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
 
+  // moviesFilter(state): método para realizar a filtragem de filmes
+  moviesFilter = ({ searchText, selectedGenre, bookmarkedOnly, movies }) => movies
+    .filter((movie) => (movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText) || movie.storyline.includes(searchText)))
+    .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
+    .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
+
   render() {
-    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
     return (
       <main>
         <SearchBar
@@ -39,7 +46,7 @@ export default class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.moviesFilter(this.state) } />
       </main>
     );
   }
