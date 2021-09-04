@@ -17,6 +17,16 @@ export default class SearchBar extends React.Component {
     return (
       // produz o form de pesquisa de filmes
       <form data-testid="search-bar-form">
+        <label htmlFor="searchText" data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            type="text"
+            name="searchText"
+            data-testid="text-input"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+        </label>
       </form>
     );
   }
