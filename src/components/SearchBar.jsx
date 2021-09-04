@@ -1,1 +1,32 @@
 // implement SearchBar component here
+import React from 'react';
+import PropTypes from 'prop-types';
+
+export default class SearchBar extends React.Component {
+  render() {
+    // recebe as props
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
+    } = this.props;
+
+    return (
+      // produz o form de pesquisa de filmes
+      <form>
+      </form>
+    );
+  }
+}
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};
