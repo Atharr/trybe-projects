@@ -9,6 +9,14 @@ export default class MovieLibrary extends React.Component {
 
     // recebe as props
     const { movies } = this.props;
+
+    // configura o estado inicial do componente
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies,
+    };
   }
 
   render() {
