@@ -18,10 +18,26 @@ export default class AddMovie extends React.Component {
     };
   }
 
-  // event handler para o evento onChange
+  // handleChange: event handler para o evento onChange
   handleChange = ({ target }) => this.setState({
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
+
+  // handleClick: event handler para o evento onClick
+  handleClick = (event) => {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
 
   // createInput: cria um elemento input customizado e seu label associado
   createInput(type, name, value, dataTestid) {
@@ -79,6 +95,9 @@ export default class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
