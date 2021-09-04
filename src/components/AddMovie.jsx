@@ -49,6 +49,10 @@ export default class AddMovie extends React.Component {
           Subtítulo
           { this.createInput('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          { this.createInput('text', 'imagePath', imagePath, 'image-input') }
+        </label>
       </form>
     );
   }
