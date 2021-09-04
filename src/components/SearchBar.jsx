@@ -15,7 +15,6 @@ export default class SearchBar extends React.Component {
     } = this.props;
 
     return (
-      // produz o form de pesquisa de filmes
       <form data-testid="search-bar-form">
         <label htmlFor="searchText" data-testid="text-input-label">
           Inclui o texto:
@@ -27,7 +26,6 @@ export default class SearchBar extends React.Component {
             onChange={ onSearchTextChange }
           />
         </label>
-
         <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
@@ -37,6 +35,20 @@ export default class SearchBar extends React.Component {
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
           />
+        </label>
+        <label htmlFor="selectedGenre" data-testid="select-input-label">
+          Filtrar por gênero
+          <select
+            name="selectedGenre"
+            data-testid="select-input"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+          >
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
+          </select>
         </label>
       </form>
     );
