@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 export default class MovieLibrary extends React.Component {
   constructor(props) {
@@ -27,6 +28,13 @@ export default class MovieLibrary extends React.Component {
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
 
+  // handleClick(movie): event handler para o evento onClick - adiciona novo filme ao array movies
+  handleClick = (movie) => {
+    this.setState(({ movies }) => ({
+      movies: [...movies, movie],
+    }));
+  }
+
   // moviesFilter(state): método para realizar a filtragem de filmes
   moviesFilter = ({ searchText, selectedGenre, bookmarkedOnly, movies }) => movies
     .filter((movie) => (movie.title.includes(searchText)
@@ -47,6 +55,7 @@ export default class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.moviesFilter(this.state) } />
+        <AddMovie onClick={ this.handleClick } />
       </main>
     );
   }
