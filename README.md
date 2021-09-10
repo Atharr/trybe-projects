@@ -1,9 +1,9 @@
 # trybe-projects
 
-This is a collection of the projects I've worked on (so far) during the **Web Development** course at [Trybe](https://github.com/tryber). The original projects are all kept in Class 14-A's various project repositories there; each student creates their own branch in a given project repo and posts their work. Each repository is named after the class number and the project name, which in my class's case is **sd-014-a-*project-name***. Each branch is also named following a simple rule: the student's name plus the project's name, in [kebab case](https://en.wiktionary.org/wiki/kebab_case)[^1] My branches are named **marcello-alves-*project-name***.
+This is a collection of the projects I've worked on (so far) during the **Web Development** course at [Trybe](https://github.com/tryber). The original projects are all kept in Class 14-A's various project repositories there; each student creates their own branch in a given project repo and posts their work. Each repository is named after the class number and the project name, which in my class's case is **sd-014-a-*project-name***. Each branch is also named following a simple rule: the student's name plus the project's name, in [kebab case](https://en.wiktionary.org/wiki/kebab_case). [^1] My branches are named **marcello-alves-*project-name***.
 
 I created this repo to act as a backup copy of my projects. In order to copy each branch from their original repositories, I simply issued the commands below inside each one of them:
-```
+```bash
 git remote add origin2 git@github.com:Atharr/trybe-projects.git
 git push --set-upstream origin2 marcello-alves-*project-name*
 ```
